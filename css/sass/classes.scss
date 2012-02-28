@@ -1,0 +1,20 @@
+
+/**
+ *  Variables to adjust global classes
+ */
+
+
+$roundedCorner: 5px;
+
+
+/**
+ * CLASSES
+ *
+ * Change the variables to adjust these
+ */
+
+.rouded {
+    -webkit-border-radius: $roundedCorner;
+    -moz-border-radius: $roundedCorner;
+    border-radius: $roundedCorner;
+}
