@@ -11,8 +11,8 @@
  * @version 0.1a
  * 
  */
-require_once 'class.validator.php';
-class Form_Input {
+
+class Form_Input extends Validator{
     
     /**
      * Private Variables 

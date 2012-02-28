@@ -1,10 +1,10 @@
 <?php
     include_once('classes/validator/class.form_input.php');
     
-    $input = new form_input();
-    $input->start();
+    $input = new Form_Input();
+    //$input->start();
     
-    var_dump($input->getRawResults());
+    //var_dump($input->getRawResults());
    
     
 ?>
