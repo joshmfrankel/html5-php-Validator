@@ -1,0 +1,10 @@
+/* line 2, ../sass/style.scss */
+form {
+  position: relative;
+  width: 400px;
+}
+
+/* line 11, ../sass/style.scss */
+form input {
+  padding: 3px;
+}

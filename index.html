@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" media="all" type="text/css" href="css/stylesheets/style.css"/>
+        <title></title>
+    </head>
+    <body>
+        
+        
+        <section>
+            <h1>This is the title</h1>
+            <p>
+                A paragraph of descriptive text for this section.  It is very interesting.  
+                A paragraph of descriptive text for this section.  It is very interesting. 
+                A paragraph of descriptive text for this section.  It is very interesting. 
+                A paragraph of descriptive text for this section.  It is very interesting. 
+            </p>
+        </section>
+        
+        
+        <!-- Form test -->
+        <form name="testForm" action="doValidate.php" method="post">
+            
+            <label for="formFirstName">First Name: </label>
+            <input type="text" name="firstname" id="formFirstName"/>
+            
+            <label for="formLastName">Last Name: </label>
+            <input type="text" name="lastname" id="formLastName" />
+            
+            <input type="hidden" name="hiddenField" id="formHidden" value="hid"/>
+            
+            <label for="formPhone">Phone: </label>
+            <input type="tel" name="phone" id="formPhone" required/>
+            
+            <label for="formCountry">Country: </label>
+            <input type="text" name="country" id="formCountry" pattern="[A-z]{3}" />
+            
+            <label for="formZip">Zip Code: </label>
+            <input type="number" name="zip" id="formZip" min="10000" max="99999" class="zipcode" required/>
+            
+            <label for="formGender">Gender: </label>
+            <input type="checkbox" name="gender" id="formGender"/>
+            
+            <input type="submit" name="formSubmit" />
+        </form>
+        
+        
+        <!-- Float image to right of text -->
+        <section style="width:600px;">
+            <p>
+             <img style="float:right;" alt="image" src="http://www.mediatehawaii.org/wp-content/uploads/placeholder.jpg" width="200"/>
+            Duis aute irure dolor sed do eiusmod tempor incididunt in reprehenderit in voluptate. Cupidatat non proident, ut labore et dolore magna aliqua. Sunt in culpa quis nostrud exercitation excepteur sint occaecat. Mollit anim id est laborum.
+            </p>
+        </section>
+        
+        
+    </body>
+</html>
