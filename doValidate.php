@@ -1,5 +1,8 @@
 <?php
-    include_once('classes/validator/class.form_input.php');
+
+    function __autoload($class_name) {
+        require_once 'classes/Validator/class.' . $class_name . '.php';
+    }
     
     $input = new Form_Input();
     //$input->start();
