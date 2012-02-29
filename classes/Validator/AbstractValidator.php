@@ -31,8 +31,8 @@ abstract class AbstractValidator {
 		return ($val1 === $val2 ? TRUE : FALSE);
 	}
 
-	public function validateByRegex() {
-
+	public function validateByRegex($regex, $val) {
+		return preg_match($regex, $val);
 	}
 }
 
