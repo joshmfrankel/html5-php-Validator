@@ -1,13 +1,13 @@
 <?php
 
     function __autoload($class_name) {
-        require_once 'classes/Validator/class.' . $class_name . '.php';
+        require_once 'classes/Validator/' . $class_name . '.php';
     }
     
     $input = new Form_Input();
-    //$input->start();
+    $input->start();
     
-    //var_dump($input->getRawResults());
+    var_dump($input->getRawResults());
    
     
 ?>

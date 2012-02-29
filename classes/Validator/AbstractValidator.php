@@ -34,6 +34,13 @@ abstract class AbstractValidator {
 	public function validateByRegex($regex, $val) {
 		return preg_match($regex, $val);
 	}
+
+	public function isGreaterThan($min, $val) {
+        return ($val > $min ? TRUE : FALSE);
+    }
+    public function isLessThan($max, $val) {
+        return ($val < $max ? TRUE : FALSE);
+    }
 }
 
 ?>
