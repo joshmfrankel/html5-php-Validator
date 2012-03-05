@@ -117,60 +117,14 @@ class Form_Input{
     public function getErrors() {
         
     }
+
+
     
     public function start() {
-        
-        
-        //$Validator = new Validator();
 
         for($i = 0; $i < $this->_index; $i++) {
 
-            switch ($this->_inputArray[$i]['type']) {
-
-                case 'text':
-
-                    $Validator = new String_Validator();
-                    
-                    break;
-
-                case 'email':
-
-                    $Validator = new Email_Validator();
-
-                    break;
-
-                case 'tel':
-
-                    /**
-                     * @todo  Add a class for telephone numbers.
-                     *        Should extend Number_Validator
-                     */
-                    $Validator = new String_Validator();
-
-                    break;
-                    
-                case 'radio':
-                case 'checkbox':
-
-                    /**
-                     * @todo  Add a class for checkboxes and radio buttons
-                     */
-                    $Validator = new String_Validator();
-
-                    break;
-
-                case 'range':
-                case 'number':
-
-                    $Validator = new Number_Validator();
-
-                    break;
-                
-                default:
-                    # code...
-                    break;
-            }
-
+            $Validator = AbstractValidator::factory($this->_inputArray[$i]['type']);
 
             /**
              * COMMON VALIDATION LOGIC

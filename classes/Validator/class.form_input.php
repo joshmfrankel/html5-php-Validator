@@ -12,7 +12,7 @@
  * 
  */
 
-class Form_Input_BACKUP{
+class Form_Input extends Validator{
     
     /**
      * Private Variables 
@@ -127,12 +127,7 @@ class Form_Input_BACKUP{
             switch ($this->_inputArray[$i]['type']) {
 
                 case 'text':
-
-                    $String_Validator = new String_Validator();
-
-                    $this->_inputArray[$i]['isValid'] = $String_Validator->validate($this->_inputArray[$i]['value']);
-
-                    //$this->_inputArray[$i]['isValid'] = $Validator->validateText($this->_inputArray[$i]['value']);
+                    $this->_inputArray[$i]['isValid'] = $Validator->validateText($this->_inputArray[$i]['value']);
 
                     if($this->_inputArray[$i]['isValid']) {
                         $this->_inputArray[$i]['sanitizedValue'] = $Validator->sanitizeText($this->_inputArray[$i]['value']);

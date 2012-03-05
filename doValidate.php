@@ -5,6 +5,13 @@
     }
     
     $input = new Form_Input();
+    //$input->start();
+    
+    //var_dump($input->getRawResults());
+
+    
+    
+    $input = new Form_Input();
     $input->start();
     
     var_dump($input->getRawResults());

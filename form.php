@@ -12,9 +12,9 @@
         <form name="testForm" action="doValidate.php" method="post">
             
             <label for="formFirstName">First Name: </label>
-            <input type="text" name="firstname" id="formFirstName" value="josh" required/>
+            <input type="text" name="firstname" id="formFirstName" value="josh"/>
             <br />
-            <label for="formEmail">Last Name: </label>
+            <label for="formEmail">Email: </label>
             <input type="email" name="email" id="formEmail"  value="frnak@.com" required/>
             <br />
             <input type="hidden" name="hiddenField" id="formHidden" value="hid"/>

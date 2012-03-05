@@ -1,0 +1,8 @@
+*.sublime-project
+*.sublime-workspace
+*.bak
+
+*.jpg
+*.png
+*.gif
+*.sass-cache
