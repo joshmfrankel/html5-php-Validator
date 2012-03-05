@@ -4,6 +4,8 @@
  * Form Input class
  * 
  * A validator class for html5 forms
+ * This will be used for back-end validation when
+ * javascript is disabled
  *
  * @author Joshua Frankel <joshmfrankel@gmail.com>
  * @see http://www.joshmfrankel.com
@@ -29,7 +31,7 @@ class Form_Input{
         require_once('plugins/phpSimpleDom/simple_html_dom.php');
         
         $this->_referer = $_SERVER['HTTP_REFERER'];
-        $this->_html = new simple_html_dom();
+        $this->_html    = new simple_html_dom();
         $this->_html->load_file($this->_referer);
         
         $this->buildInput();
@@ -96,6 +98,11 @@ class Form_Input{
                  */
                 $this->_inputArray[$x]['value']      = $_POST[$element->name];
                 $this->_inputArray[$x]['required']   = $element->required;
+
+                /**
+                 * @todo Perform validation
+                 *       should save an entire step and speed up
+                 */
 
                 $x++;
             }

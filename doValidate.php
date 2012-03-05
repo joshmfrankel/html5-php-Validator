@@ -1,19 +1,20 @@
 <?php
 
+
     function __autoload($class_name) {
         require_once 'classes/Validator/' . $class_name . '.php';
     }
     
-    $input = new Form_Input();
-    //$input->start();
-    
-    //var_dump($input->getRawResults());
 
-    
-    
+    $s = microtime();
     $input = new Form_Input();
     $input->start();
-    
+    $e = microtime();
+
+    $time = $e - $s;
+    echo 'Execution in ' , $time , 'ms';
+
+
     var_dump($input->getRawResults());
    
     
