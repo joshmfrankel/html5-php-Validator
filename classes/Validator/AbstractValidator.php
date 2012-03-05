@@ -1,13 +1,21 @@
 <?php
 
 /**
+ * Abstract Validator
  * 
+ * An abstract base class for all validator classes
+ * 
+ * @author Josh Frankel <joshmfrankel@gmail.com>
+ * @abstract
+ * @copyright 2011-2012
+ * @version 0.8
  */
 abstract class AbstractValidator {
 
 	/**
 	 * validate abstract function
 	 * 
+	 * @abstract
 	 * @param  mixed $val The input value
 	 * @return bool
 	 */
@@ -16,6 +24,7 @@ abstract class AbstractValidator {
 	/**
 	 * sanitize abstract function
 	 * 
+	 * @abstract
 	 * @param  mixed $val The input value
 	 * @return mixed
 	 */
@@ -33,6 +42,7 @@ abstract class AbstractValidator {
  	 * Instantiates new validator objects based on the type
  	 * of input to validate
  	 * 
+ 	 * @static
  	 * @param  string $className The class name or type of input to validate
  	 * @return Validator class of specified type
  	 */
