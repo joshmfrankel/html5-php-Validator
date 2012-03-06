@@ -5,9 +5,10 @@
  * 
  * An abstract base class for all validator classes
  * 
- * @author Josh Frankel <joshmfrankel@gmail.com>
- * @abstract
- * @copyright 2011-2012
+ * @author Joshua Frankel <joshmfrankel@gmail.com>
+ * @copyright 2011-2012, All Rights Reserved
+ * @license MIT License http://www.opensource.org/licenses/mit-license.php
+ * @see http://www.joshmfrankel.com
  * @version 0.8
  */
 abstract class ValidatorAbstract {

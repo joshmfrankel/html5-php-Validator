@@ -13,8 +13,8 @@
     $time = $e - $s;
     echo 'Execution in ' , $time , 'ms';
 
-
-    var_dump($input->getRawResults());
+    print_r($input->getformattedErrorResults());
+    //var_dump($input->getRawResults());
    
     
 ?>

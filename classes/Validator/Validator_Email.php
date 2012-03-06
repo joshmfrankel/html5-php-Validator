@@ -1,24 +1,26 @@
 <?php
 
-	/**
-	 * Email_Validator.php
-	 * 
-	 * @author Josh Frankel
-	 * @version 0.1
-	 *
-	 **/
-	class Validator_Email extends ValidatorAbstract{
+/**
+ * Email_Validator.php
+ * 
+ * @author Joshua Frankel <joshmfrankel@gmail.com>
+ * @copyright 2011-2012, All Rights Reserved
+ * @license MIT License http://www.opensource.org/licenses/mit-license.php
+ * @see http://www.joshmfrankel.com
+ * @version 0.8
+ */
+class Validator_Email extends ValidatorAbstract{
 
 
-	    public function validate($val) {
-	        return filter_var($val, FILTER_VALIDATE_EMAIL);
-	    }
+    public function validate($val) {
+        return filter_var($val, FILTER_VALIDATE_EMAIL);
+    }
 
-	    public function sanitize($val) {
-	        return filter_var($val, FILTER_VALIDATE_EMAIL);
-	    }
+    public function sanitize($val) {
+        return filter_var($val, FILTER_VALIDATE_EMAIL);
+    }
 
-		
-	}
+	
+}
 
 ?>
