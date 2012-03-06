@@ -140,21 +140,14 @@ class Form_Input{
             /* END FOREACH */
         }
         
-        //set the index based off the number of iterations
-        $this->setIndex();
-        
     }
    
-
-    private function setIndex() {
-        $this->_index = count($this->_inputArray);
-    }
     
     public function getRawResults() {
         return $this->_inputArray;
     }
 
-    public function getErrors() {
+    public function getErrorResults() {
         
     }
 

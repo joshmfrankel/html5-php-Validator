@@ -40,35 +40,42 @@ abstract class ValidatorAbstract {
      * Factory Pattern method
      * 
      * Instantiates new validator objects based on the type
-     * of input to validate
+     * of input to validate.  Is declared as static final
+     * to allow usage anywhere in the application while also
+     * preventing inheriting classes from overriding the logic.
      * 
      * @static
+     * @final
      * @param  string $className The class name or type of input to validate
      * @return Validator class of specified type
      */
-    public static function factory($className) {
+    public static final function factory($className) {
 
+        //prefix
+        $prefix = 'Validator_';
 
-          switch ($className) {
+        switch ($className) {
 
             case 'text':
 
-                $className = 'Validator_String';
+                $className = 'String';
 
                 break;
             case 'email':
 
-                $className = 'Validator_Email';
+                $className = 'Email';
 
                 break;
 
             case 'tel':
+            case 'telephone':
+            case 'phone':
 
                 /**
                  * @todo  Add a class for telephone numbers.
                  *        Should extend Number_Validator
                  */
-                $className = 'Validator_String';
+                $className = 'String';
 
                 break;
                 
@@ -78,14 +85,14 @@ abstract class ValidatorAbstract {
                 /**
                  * @todo  Add a class for checkboxes and radio buttons
                  */
-                $className = 'Validator_String';
+                $className = 'String';
 
                 break;
 
             case 'range':
             case 'number':
 
-                $className = 'Validator_Number';
+                $className = 'Number';
 
                 break;
             
@@ -93,6 +100,9 @@ abstract class ValidatorAbstract {
 
                 break;
         }
+
+        //prefix the class name
+        $className = $prefix . $className;
 
 
         return new $className;

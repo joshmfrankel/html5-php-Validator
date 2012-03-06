@@ -13,6 +13,8 @@
 		public function validate($val) {
 			if(is_array($val) && count($val) > 0) {
 				return TRUE;
+			} else {
+				return FALSE;
 			}
 	    }
 

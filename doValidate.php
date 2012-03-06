@@ -8,7 +8,6 @@
 
     $s = microtime();
     $input = new Form_Input();
-    //$input->start();
     $e = microtime();
 
     $time = $e - $s;

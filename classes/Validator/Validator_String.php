@@ -17,7 +17,6 @@
 	    public function sanitize($val) {
 	        return filter_var($val, FILTER_SANITIZE_STRING);
 	    }
-
 		
 	}
 
