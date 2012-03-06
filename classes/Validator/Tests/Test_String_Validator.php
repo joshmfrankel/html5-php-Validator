@@ -8,8 +8,8 @@
 	 *
 	 **/
 
-	require_once '../AbstractValidator.php';
-    require_once '../string_validator.php';
+	require_once '../ValidatorAbstract.php';
+    require_once '../Validator_String.php';
     
 
 	class Test_String_Validator extends PHPUnit_Framework_TestCase {
@@ -17,7 +17,7 @@
 		protected $fixture;
 		
 		protected function setUp() {
-			$this->fixture = new String_Validator();
+			$this->fixture = new Validator_String();
 		}
 
 		public function testValidate() {

@@ -7,13 +7,11 @@
 	 * @version 0.1
 	 *
 	 **/
-	class Validator_Array extends ValidatorAbstract{
+	class Validator_Number extends ValidatorAbstract{
 		
 
 		public function validate($val) {
-			if(is_array($val) && count($val) > 0) {
-				return TRUE;
-			}
+        	return filter_var($val, FILTER_VALIDATE_INT);
 	    }
 
 	    public function sanitize($val) {

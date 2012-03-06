@@ -23,6 +23,7 @@ class Form_Input{
     private $_inputArray = array();
     private $_html;
     private $_index;
+    private $_x;
     
     /**
      * Constructor
@@ -34,19 +35,19 @@ class Form_Input{
         $this->_html    = new simple_html_dom();
         $this->_html->load_file($this->_referer);
         
-        $this->buildInput();
+        $this->buildOutput();
         //$this->start();
     }
     
     /**
-     * buildInputArray method
+     * buildOutput method
      * 
      * Builds an array of data from the previously submitted form
      * @return void
      * 
      * @todo add image support
      */
-    private function buildInput(){
+    private function buildOutput(){
         
         $x = 0;
         
@@ -90,8 +91,10 @@ class Form_Input{
                  * HTML5 data attribute
                  * data-validate contains a special validator parameter
                  */
-                if(isset($element->attr['data-validate'])) 
+                if(isset($element->attr['data-validate'])) {
                     $this->_inputArray[$x]['special']    = $element->attr['data-validate'];
+                }
+                    
 
                 /**
                  * Other Attributes
@@ -103,16 +106,46 @@ class Form_Input{
                  * @todo Perform validation
                  *       should save an entire step and speed up
                  */
+                
+                //Start the factory method
+                $Validator = ValidatorAbstract::factory($this->_inputArray[$x]['type']);
 
+                //Check for basic validation passing
+                $this->_inputArray[$x]['isValid'] = $Validator->validate($this->_inputArray[$x]['value']);
+
+                //if the type is a number or range and has a min or max then validate against
+                if($this->_inputArray[$x]['type'] == 'number' || $this->_inputArray[$x]['type'] == 'range') {
+
+                    if(isset($this->_inputArray[$x]['min']) && $this->_inputArray[$x]['isValid']){
+                        $this->_inputArray[$x]['isValid'] = $Validator->isGreaterThan($this->_inputArray[$x]['min'], $this->_inputArray[$x]['value']);
+                    }
+
+                    if(isset($this->_inputArray[$x]['max']) && $this->_inputArray[$x]['isValid']){
+                        $this->_inputArray[$x]['isValid'] = $Validator->isLessThan($this->_inputArray[$x]['max'], $this->_inputArray[$x]['value']);
+                    }    
+
+                }
+                
+                //Sanitize the value if it passes validation
+                if($this->_inputArray[$x]['isValid']) {
+                    $this->_inputArray[$x]['sanitizedValue'] = $Validator->sanitize($this->_inputArray[$x]['value']);
+                }
+
+                //Reset the validator object
+                $Validator = NULL;
+
+                //increment index
                 $x++;
             }
+            /* END FOREACH */
         }
         
         //set the index based off the number of iterations
         $this->setIndex();
         
     }
-    
+   
+
     private function setIndex() {
         $this->_index = count($this->_inputArray);
     }
@@ -125,53 +158,6 @@ class Form_Input{
         
     }
 
-
-    
-    public function start() {
-
-        for($i = 0; $i < $this->_index; $i++) {
-
-            $Validator = AbstractValidator::factory($this->_inputArray[$i]['type']);
-
-            /**
-             * COMMON VALIDATION LOGIC
-             */
-            
-            $this->_inputArray[$i]['isValid'] = $Validator->validate($this->_inputArray[$i]['value']);
-
-            /**
-             * @todo  check for class type if string validator then do not create a new object
-             */
-
-            /**
-             * @todo  Fix the following logic for numbers or ranges with minimum and maximums
-             */
-            // if(isset($this->_inputArray[$i]['min'])){
-            //     $this->_inputArray[$i]['min'] = FALSE;
-            // }
-
-            // if(isset($this->_inputArray[$i]['max'])){
-            //     $this->_inputArray[$i]['max'] = FALSE;
-            // }
-
-            // if($this->_inputArray[$i]['min'] && $this->_inputArray[$i]['isValid']) {
-            //      $this->_inputArray[$i]['isValid'] = $Validator->isGreaterThan($this->_inputArray[$i]['value'], $this->_inputArray[$i]['min']);
-            //  }
-
-            // //if there is a max attribute and the isValid flag is not FALSE
-            // if($this->_inputArray[$i]['max'] && $this->_inputArray[$i]['isValid']) {
-            //     $this->_inputArray[$i]['isValid'] = $Validator->isLessThan($this->_inputArray[$i]['value'], $this->_inputArray[$i]['max']);
-            // }
-            
-
-            if($this->_inputArray[$i]['isValid']) {
-                $this->_inputArray[$i]['sanitizedValue'] = $Validator->sanitize($this->_inputArray[$i]['value']);
-            }
-
-            $Validator = NULL;
-            
-        }
-    }
     
 }
 
