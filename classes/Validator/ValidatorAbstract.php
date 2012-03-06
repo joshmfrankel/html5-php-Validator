@@ -55,16 +55,14 @@ abstract class ValidatorAbstract {
         //prefix
         $prefix = 'Validator_';
 
+        //Manually set the class name if there is no specific
+        //class file
         switch ($className) {
 
-            case 'text':
+            case 'string':
+            case 'search':
 
-                $className = 'String';
-
-                break;
-            case 'email':
-
-                $className = 'Email';
+                $className = 'Text';
 
                 break;
 
@@ -76,7 +74,7 @@ abstract class ValidatorAbstract {
                  * @todo  Add a class for telephone numbers.
                  *        Should extend Number_Validator
                  */
-                $className = 'String';
+                $className = 'Text';
 
                 break;
                 
@@ -86,17 +84,27 @@ abstract class ValidatorAbstract {
                 /**
                  * @todo  Add a class for checkboxes and radio buttons
                  */
-                $className = 'String';
+                $className = 'Text';
 
                 break;
 
             case 'range':
-            case 'number':
 
                 $className = 'Number';
 
                 break;
+
+
+            case 'file':
+                break;
+
+            case 'date':
+            case 'datetime':
+            case 'datetime-local':
+            case 'month':
+            case 'time':
             
+                break;
             default:
 
                 break;
@@ -106,6 +114,9 @@ abstract class ValidatorAbstract {
         $className = $prefix . $className;
 
 
+        /**
+         * @todo Exception Handling if there is no valid class file
+         */
         return new $className;
     }
     
